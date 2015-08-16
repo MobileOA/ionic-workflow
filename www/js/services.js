@@ -1,50 +1,76 @@
 angular.module('starter.services', [])
 
-.factory('Chats', function() {
-  // Might use a resource here that returns a JSON array
+    .factory('AllRequestStatus', function() {
+      // Might use a resource here that returns a JSON array
 
-  // Some fake testing data
-  var chats = [{
-    id: 0,
-    name: 'Ben Sparrow',
-    lastText: 'You on your way?',
-    face: 'https://pbs.twimg.com/profile_images/514549811765211136/9SgAuHeY.png'
-  }, {
-    id: 1,
-    name: 'Max Lynx',
-    lastText: 'Hey, it\'s me',
-    face: 'https://avatars3.githubusercontent.com/u/11214?v=3&s=460'
-  }, {
-    id: 2,
-    name: 'Adam Bradleyson',
-    lastText: 'I should buy a boat',
-    face: 'https://pbs.twimg.com/profile_images/479090794058379264/84TKj_qa.jpeg'
-  }, {
-    id: 3,
-    name: 'Perry Governor',
-    lastText: 'Look at my mukluks!',
-    face: 'https://pbs.twimg.com/profile_images/598205061232103424/3j5HUXMY.png'
-  }, {
-    id: 4,
-    name: 'Mike Harrington',
-    lastText: 'This is wicked good ice cream.',
-    face: 'https://pbs.twimg.com/profile_images/578237281384841216/R3ae1n61.png'
-  }];
+      // Some fake testing data
+      var empty_allRequestStatus = [{
+        id: 0,
+        name: 'inbox',
+        title: 'Inbox',
+        icon: 'inbox',
+        totalNumber: 0
+      }, {
+        id: 1,
+        name: 'approved',
+        title: 'Approved',
+        icon: 'approved',
+        totalNumber: 0
+      }, {
+        id: 2,
+        name: 'rejected',
+        title: 'Rejected',
+        icon: 'rejected',
+        totalNumber: 0
+      }, {
+        id: 3,
+        name: 'outbox',
+        title: 'Outbox',
+        icon: 'outbox',
+        totalNumber: 0
+      }];
 
-  return {
-    all: function() {
-      return chats;
-    },
-    remove: function(chat) {
-      chats.splice(chats.indexOf(chat), 1);
-    },
-    get: function(chatId) {
-      for (var i = 0; i < chats.length; i++) {
-        if (chats[i].id === parseInt(chatId)) {
-          return chats[i];
+      var getAllRequestStatus = function () {
+        var allRequestStatusString = window.localStorage['allRequestStatus'];
+        if (allRequestStatusString) {
+          var allRequestStatus = angular.fromJson(allRequestStatusString);
+
+          return allRequestStatus;
+        }
+
+        return empty_allRequestStatus;
+      }
+
+      var getRequestStatusWithIndex = function (requestStatusId) {
+        var allRequestStatus = getAllRequestStatus();
+        var requestStatusWithIndex = {index: 0, requestStatus: {}};
+
+        for (i = 0; i < allRequestStatus.length; i++) {
+          if (allRequestStatus[i].id == requestStatusId) {
+            requestStatusWithIndex = {index: i, requestStatus: allRequestStatus[i]};
+            return requestStatusWithIndex;
+          }
         }
       }
-      return null;
-    }
-  };
-});
+
+      var saveAllRequestStatus = function (allRequestStatus) {
+        window.localStorage['allRequestStatus'] = angular.toJson(allRequestStatus);
+      }
+
+      var updateRequestStatusCount = function(requestStatusId, statusRequests){
+        var requestStatusWithIndex = getRequestStatusWithIndex(requestStatusId);
+        var allRequestStatus = getAllRequestStatus();
+
+        var modifyStatusIndex = requestStatusWithIndex.index;
+        allRequestStatus[modifyStatusIndex].totalNumber = statusRequests.length;
+        saveAllRequestStatus(allRequestStatus);
+      }
+
+      return {
+        allRequestStatus: getAllRequestStatus,
+        getRequestStatusWithIndex: getRequestStatusWithIndex,
+        saveAllRequestStatus: saveAllRequestStatus,
+        updateRequestStatusCount: updateRequestStatusCount
+      };
+    });
+
