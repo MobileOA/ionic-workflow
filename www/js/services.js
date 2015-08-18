@@ -6,25 +6,21 @@ angular.module('starter.services', [])
       // Some fake testing data
       var empty_allRequestStatus = [{
         id: 0,
-        name: 'inbox',
         title: 'Inbox',
         icon: 'inbox',
         totalNumber: 0
       }, {
         id: 1,
-        name: 'approved',
         title: 'Approved',
         icon: 'approved',
         totalNumber: 0
       }, {
         id: 2,
-        name: 'rejected',
         title: 'Rejected',
         icon: 'rejected',
         totalNumber: 0
       }, {
         id: 3,
-        name: 'outbox',
         title: 'Outbox',
         icon: 'outbox',
         totalNumber: 0
@@ -39,7 +35,7 @@ angular.module('starter.services', [])
         }
 
         return empty_allRequestStatus;
-      }
+      };
 
       var getRequestStatusWithIndex = function (requestStatusId) {
         var allRequestStatus = getAllRequestStatus();
@@ -51,11 +47,11 @@ angular.module('starter.services', [])
             return requestStatusWithIndex;
           }
         }
-      }
+      };
 
       var saveAllRequestStatus = function (allRequestStatus) {
         window.localStorage['allRequestStatus'] = angular.toJson(allRequestStatus);
-      }
+      };
 
       var updateRequestStatusCount = function(requestStatusId, statusRequests){
         var requestStatusWithIndex = getRequestStatusWithIndex(requestStatusId);
@@ -64,7 +60,7 @@ angular.module('starter.services', [])
         var modifyStatusIndex = requestStatusWithIndex.index;
         allRequestStatus[modifyStatusIndex].totalNumber = statusRequests.length;
         saveAllRequestStatus(allRequestStatus);
-      }
+      };
 
       return {
         allRequestStatus: getAllRequestStatus,
@@ -72,5 +68,9 @@ angular.module('starter.services', [])
         saveAllRequestStatus: saveAllRequestStatus,
         updateRequestStatusCount: updateRequestStatusCount
       };
-    });
+    })
+
+.factory('Request', function(){
+      
+});
 

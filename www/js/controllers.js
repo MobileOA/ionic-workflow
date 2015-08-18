@@ -7,8 +7,21 @@ angular.module('starter.controllers', [])
       }
     })
     .controller('RequestStatusCtrl', function($scope, $stateParams, AllRequestStatus){
-      var requestStatusId = $stateParams.requestStatusId
+        var requestStatusId = $stateParams.requestStatusId;
       $scope.requestStatusWithIndex = AllRequestStatus.getRequestStatusWithIndex(requestStatusId)
     })
-    .controller('RequestDetailCtrl', function($scope){})
-    .controller('SettingsCtrl', function($scope){})
+    .controller('RequestDetailCtrl', function($scope,$stateParams){
+        $scope.isNew = true;
+        $scope.title = "New Request";
+
+        var requestId = $stateParams.requestId;
+        if (requestId > 0) {
+            $scope.isNew = false;
+            $scope.title = "Request Detail"
+        }
+
+        $scope.submitRequest = function(){
+
+        }
+    })
+    .controller('SettingsCtrl', function($scope){});
