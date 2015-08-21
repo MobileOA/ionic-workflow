@@ -1,12 +1,12 @@
 <ion-view view-title="Home">
     <ion-nav-buttons side="right">
-        <button class="button button-clear" ng-click="newRequest()">New</button>
+        <a class="button button-clear" ng-click="newRequest()">New</a>
     </ion-nav-buttons>
     <ion-content>
         <ion-list>
             <a ng-repeat="requestStatus in allRequestStatus" class="item item-avatar-left" href="#/tab/request-status/{{requestStatus.id}}">
-                <h2 class="positive title">{{requestStatus.title}}</h2>
-                <p>Total <span class="assertive">{{requestStatus.totalNumber}}</span></p>
+                <h2 class="title">{{requestStatus.title}}</h2>
+                <p>Total <span class="positive">{{requestStatus.totalNumber}}</span></p>
             </a>
         </ion-list>
     </ion-content>

@@ -2,26 +2,28 @@
     <ion-content>
             <div class="list" ng-show="isNew">
             <label class="item item-input item-select">
-                <span class="input-label positive">Leave Type</span>
+                <span class="input-label">Leave Type</span>
                 <select  ng-options="test test1 test2"></select>
             </label>
             <label class="item item-input">
-                <span class="input-label positive">Leave From</span>
+                <span class="input-label">Leave From</span>
                 <input type="date">
             </label>
             <label class="item item-input">
-                <span class="input-label positive">Leave To</span>
+                <span class="input-label">Leave To</span>
                 <input type="date">
             </label>
             <label class="item item-input">
-                <span class="input-label positive">Leave Reason</span>
+                <span class="input-label">Leave Reason</span>
                 <input type="text">
             </label>
             <label class="item item-input">
-                <span class="input-label positive">Leave Balance</span>
+                <span class="input-label">Leave Balance</span>
                 <input type="number">
             </label>
-                <button class="button button-positive" style="float: right; margin-right: 10%; margin-top: 10%">Submit</button>
+                <label class="item">
+                    <button class="button button-block button-positive">Submit</button>
+                </label>
         </div>
 
         <div class="list" ng-show="!isNew">
