@@ -1,9 +1,9 @@
 <ion-view view-title="{{title}}">
     <ion-content>
-            <div class="list" ng-show="isNew">
-            <label class="item item-input item-select">
+        <div class="list" ng-show="isNew">
+            <label class="item item-input">
                 <span class="input-label">Leave Type</span>
-                <select  ng-options="test test1 test2"></select>
+                <input type="text">
             </label>
             <label class="item item-input">
                 <span class="input-label">Leave From</span>
@@ -21,23 +21,31 @@
                 <span class="input-label">Leave Balance</span>
                 <input type="number">
             </label>
-                <label class="item">
-                    <button class="button button-block button-positive">Submit</button>
-                </label>
+            <label class="item item-input">
+                <span class="input-label">Rasied By</span>
+                <span class="text-center">{{request.raisedBy}}</span>
+            </label>
+            <label class="item item-input">
+                <span class="input-label">Rasied On</span>
+                <span class="text-center">{{request.raisedOn}}</span>
+            </label>
+            <label class="item">
+                <button class="button button-block button-positive" ng-click="submitRequest()">Submit</button>
+            </label>
         </div>
 
         <div class="list" ng-show="!isNew">
-            <label class="item item-input item-select">
+            <label class="item item-input">
                 <span class="input-label positive">Leave Type</span>
-                <select  ng-options="test test1 test2"></select>
+                <span class="text-center">{{request.leaveType}}</span>
             </label>
             <label class="item item-input">
                 <span class="input-label positive">Leave From</span>
-                <input type="date">
+                <span class="text-center">{{request.leaveFrom}}</span>
             </label>
             <label class="item item-input">
                 <span class="input-label positive">Leave To</span>
-                <input type="date">
+                <span class="text-center">{{request.leaveTo}}</span>
             </label>
             <label class="item item-input">
                 <span class="input-label positive">Leave Reason</span>
@@ -47,8 +55,10 @@
                 <span class="input-label positive">Leave Balance</span>
                 <input type="number">
             </label>
-            <button class="button button-positive" style="float: right; margin-right: 10%; margin-top: 10%">Reject</button>
-            <button class="button button-positive" style="float: right; margin-right: 10%; margin-top: 10%">Approve</button>
+            <label class="item">
+                <button class="button button-block button-positive">Approve</button>
+                <button class="button button-block button-positive">Reject</button>
+            </label>
         </div>
     </ion-content>
 

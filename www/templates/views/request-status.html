@@ -1,5 +1,8 @@
 <ion-view title="{{requestStatusWithIndex.requestStatus.title}}">
     <ion-content>
         Request View!
+        <ion-list>
+            <a ng-repeat="request in statusRequests" class="item" ng-href="#/tab/request-detail/{{request.requestId}}">{{request.requestId}}</a>
+        </ion-list>
     </ion-content>
 </ion-view>

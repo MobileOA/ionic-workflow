@@ -74,27 +74,27 @@ angular.module('starter.services', [])
       };
     })
 
-.factory('Requests', function(AllRequestStatus){
+.factory('Requests', function() {
       var getAllRequests = function() {
-
+        //window.localStorage['requests'] = '';
         var requestsString = window.localStorage['requests'];
         if (requestsString) {
           var requests = angular.fromJson(requestsString);
           return requests;
-        } else {
-          return [];
         }
+        return [];
       };
 
-      var getStatusRequests = function (requestStatus) {
+      var getStatusRequests = function (requestStatusId) {
         var allRequests = getAllRequests();
         var statusRequests = [];
 
         for (i=0; i<allRequests.length; i++) {
-          if(allRequests[i].requestStatus == requestStatus) {
+          if(allRequests[i].requestStatusId == requestStatusId) {
             statusRequests.push(allRequests[i])
           }
         }
+        return statusRequests;
       };
 
       var getRequestWithIndex = function(requestId){
@@ -121,7 +121,7 @@ angular.module('starter.services', [])
         newRequest: function () {
           return {
             requestId: 0,
-            requestStatus: 'New',
+            requestStatusId: 0,
             leaveType: '',
             leaveFrom: '',
             leaveTo: '',

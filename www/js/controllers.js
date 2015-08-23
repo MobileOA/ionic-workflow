@@ -6,11 +6,13 @@ angular.module('starter.controllers', [])
         $state.go('tab.request-detail', {requestId:0});
       }
     })
-    .controller('RequestStatusCtrl', function($scope, $stateParams, AllRequestStatus){
+    .controller('RequestStatusCtrl', function($scope, $stateParams, Requests, AllRequestStatus){
         var requestStatusId = $stateParams.requestStatusId;
-      $scope.requestStatusWithIndex = AllRequestStatus.getRequestStatusWithIndex(requestStatusId)
+        $scope.requestStatusWithIndex = AllRequestStatus.getRequestStatusWithIndex(requestStatusId);
+        $scope.statusRequests = Requests.getStatusRequests(requestStatusId);
+
     })
-    .controller('RequestDetailCtrl', function($scope,$stateParams, Requests){
+    .controller('RequestDetailCtrl', function($scope,$state,$stateParams, Requests, AllRequestStatus){
         $scope.isNew = true;
         $scope.title = "New Request";
 
@@ -37,13 +39,16 @@ angular.module('starter.controllers', [])
 
             } else {
                 var insertRequest = $scope.request;
-                insertRequest.status = "Pending for approval";
                 insertRequest.requestId = Requests.getLastRequestId() + 1;
                 allRequests.push(insertRequest);
+                Requests.setLastRequestId(insertRequest.requestId);
                 totalAdd = 1;
             };
 
             Requests.saveRequests(allRequests);
+            AllRequestStatus.updateRequestStatusCount($scope.request.requestStatusId, Requests.getStatusRequests($scope.request.requestStatusId));
+            //$state.go('tab.request-status', {requestStatusId: $scope.request.requestStatusId});
+            $state.go('tab.home');
         }
     })
     .controller('SettingsCtrl', function($scope){})
