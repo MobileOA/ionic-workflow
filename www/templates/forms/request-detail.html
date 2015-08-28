@@ -1,32 +1,32 @@
-<ion-view view-title="{{title}}">
+<ion-view title="{{title}}">
     <ion-content>
         <div class="list" ng-show="isNew">
             <label class="item item-input">
                 <span class="input-label">Leave Type</span>
-                <input type="text">
+                <input type="text" ng-model="request.leaveType">
             </label>
             <label class="item item-input">
                 <span class="input-label">Leave From</span>
-                <input type="date">
+                <input type="date" ng-model="request.leaveFrom">
             </label>
             <label class="item item-input">
                 <span class="input-label">Leave To</span>
-                <input type="date">
+                <input type="date" ng-model="request.leaveTo">
             </label>
             <label class="item item-input">
                 <span class="input-label">Leave Reason</span>
-                <input type="text">
+                <input type="text" ng-model="request.leaveReason">
             </label>
             <label class="item item-input">
                 <span class="input-label">Leave Balance</span>
-                <input type="number">
+                <input type="number" ng-model="request.leaveBalance">
             </label>
             <label class="item item-input">
-                <span class="input-label">Rasied By</span>
+                <span class="input-label">Raised By</span>
                 <span class="text-center">{{request.raisedBy}}</span>
             </label>
             <label class="item item-input">
-                <span class="input-label">Rasied On</span>
+                <span class="input-label">Raised On</span>
                 <span class="text-center">{{request.raisedOn}}</span>
             </label>
             <label class="item">
@@ -49,11 +49,23 @@
             </label>
             <label class="item item-input">
                 <span class="input-label positive">Leave Reason</span>
-                <input type="text">
+                <span class="text-center">{{request.leaveReason}}</span>
             </label>
             <label class="item item-input">
                 <span class="input-label positive">Leave Balance</span>
-                <input type="number">
+                <span class="text-center">{{request.leaveBalance}}</span>
+            </label>
+            <label class="item item-input">
+                <span class="input-label positive">Raised By</span>
+                <span class="text-center">{{request.raisedBy}}</span>
+            </label>
+            <label class="item item-input">
+                <span class="input-label positive">Raised On</span>
+                <span class="text-center">{{request.raisedOn}}</span>
+            </label>
+            <label class="item item-input">
+                <span class="input-label positive">Remarks</span>
+                <input type="text" ng-model="request.remarks">
             </label>
             <label class="item">
                 <button class="button button-block button-positive">Approve</button>

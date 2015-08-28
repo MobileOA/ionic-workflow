@@ -44,7 +44,7 @@ angular.module('starter.services', [])
       var getRequestStatusWithIndex = function (requestStatusId) {
         var allRequestStatus = getAllRequestStatus();
         var requestStatusWithIndex = {index: 0, requestStatus: {}};
-
+        var i;
         for (i = 0; i < allRequestStatus.length; i++) {
           if (allRequestStatus[i].id == requestStatusId) {
             requestStatusWithIndex = {index: i, requestStatus: allRequestStatus[i]};
@@ -88,7 +88,7 @@ angular.module('starter.services', [])
       var getStatusRequests = function (requestStatusId) {
         var allRequests = getAllRequests();
         var statusRequests = [];
-
+        var i;
         for (i=0; i<allRequests.length; i++) {
           if(allRequests[i].requestStatusId == requestStatusId) {
             statusRequests.push(allRequests[i])
@@ -100,7 +100,7 @@ angular.module('starter.services', [])
       var getRequestWithIndex = function(requestId){
         var allRequests = getAllRequests();
         var requestWithIndex = {index:0, request:{}};
-
+        var i;
         for (i=0; i<allRequests.length; i++) {
           if(allRequests[i].requestId == requestId) {
             requestWithIndex = {index:i, request:allRequests[i]};
@@ -119,6 +119,7 @@ angular.module('starter.services', [])
         getRequestWithIndex: getRequestWithIndex,
         saveRequests: saveRequests,
         newRequest: function () {
+          var current = new Date();
           return {
             requestId: 0,
             requestStatusId: 0,
@@ -128,7 +129,8 @@ angular.module('starter.services', [])
             leaveReason: '',
             leaveBalance: '',
             raisedBy: 'Lauro Li',
-            raisedOn: '2015/08/12'
+            raisedOn: current.toLocaleDateString(),
+            remarks: ''
           }
         },
         getLastRequestId: function(){

@@ -33,7 +33,6 @@ angular.module('starter.controllers', [])
         }
 
         $scope.submitRequest = function(){
-            var totalAdd = 0;
 
             if (requestId > 0) {
 
@@ -42,8 +41,7 @@ angular.module('starter.controllers', [])
                 insertRequest.requestId = Requests.getLastRequestId() + 1;
                 allRequests.push(insertRequest);
                 Requests.setLastRequestId(insertRequest.requestId);
-                totalAdd = 1;
-            };
+            }
 
             Requests.saveRequests(allRequests);
             AllRequestStatus.updateRequestStatusCount($scope.request.requestStatusId, Requests.getStatusRequests($scope.request.requestStatusId));
