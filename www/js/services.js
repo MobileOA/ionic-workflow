@@ -129,7 +129,7 @@ angular.module('starter.services', [])
             leaveReason: '',
             leaveBalance: '',
             raisedBy: 'Lauro Li',
-            raisedOn: current.toLocaleDateString(),
+            raisedOn: new Date(),
             remarks: ''
           }
         },
@@ -140,5 +140,9 @@ angular.module('starter.services', [])
           window.localStorage['lastRequestId'] = index;
         }
       }
-});
+  })
+
+.factory('WorkFlow',function(){
+      
+    });
 

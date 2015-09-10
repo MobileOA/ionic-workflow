@@ -1,8 +1,13 @@
-<ion-view title="{{requestStatusWithIndex.requestStatus.title}}">
+<ion-view title="{{requestStatusWithIndex.requestStatus.title}}" xmlns="http://www.w3.org/1999/html">
+    <ion-nav-buttons side="right">
+        <button class="button button-icon icon ion-navicon"></button>
+    </ion-nav-buttons>
     <ion-content>
-        Request View!
-        <ion-list>
-            <a ng-repeat="request in statusRequests" class="item" ng-href="#/tab/request-detail/{{request.requestId}}">{{request.requestId}}</a>
-        </ion-list>
+        <div class="list card">
+            <a ng-repeat="request in statusRequests" class="item" ng-href="#/tab/request-detail/{{request.requestId}}">
+                <h2><strong>{{request.raisedBy}}</strong>'s {{request.leaveType}} request</h2>
+                <h3 style="float: right">raised on {{request.raisedOn | date:'mediumDate'}}</h3>
+            </a>
+        </div>
     </ion-content>
 </ion-view>

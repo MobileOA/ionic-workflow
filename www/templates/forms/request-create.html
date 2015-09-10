@@ -1,0 +1,35 @@
+<ion-view view-title="New Request">
+    <ion-content>
+        <div class="list list-inset">
+            <label class="item item-input">
+                <span class="input-label">Leave Type</span>
+                <input type="text" required ng-model="request.leaveType">
+            </label>
+            <label class="item item-input">
+                <span class="input-label">Leave From</span>
+                <input type="date" required ng-model="request.leaveFrom">
+            </label>
+            <label class="item item-input">
+                <span class="input-label">Leave To</span>
+                <input type="date" required ng-model="request.leaveTo">
+            </label>
+            <label class="item item-input">
+                <span class="input-label">Leave Reason</span>
+                <input type="text" required ng-model="request.leaveReason">
+            </label>
+            <label class="item item-input">
+                <span class="input-label">Leave Balance</span>
+                <input type="number" required ng-model="request.leaveBalance">
+            </label>
+            <label class="item item-input">
+                <span class="input-label">Raised By</span>
+                <span class="text-center">{{request.raisedBy}}</span>
+            </label>
+            <label class="item item-input">
+                <span class="input-label">Raised On</span>
+                <span class="text-center">{{request.raisedOn | date:'mediumDate'}}</span>
+            </label>
+            <button class="button button-block button-positive" ng-click="submitRequest()">Submit</button>
+        </div>
+    </ion-content>
+</ion-view>

@@ -39,8 +39,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   })
 
     // Each tab has its own nav history stack:
-
       .state('tab.home', {
+        cache: false,
         url: '/home',
         views: {
           'tab-home': {
@@ -56,6 +56,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
           'tab-home': {
             templateUrl: 'templates/views/request-status.html',
             controller: 'RequestStatusCtrl'
+          }
+        }
+      })
+
+      .state('tab.request-create', {
+        url: '/request-create',
+        views: {
+          'tab-home': {
+            templateUrl: 'templates/forms/request-create.html',
+            controller: 'RequestCreateCtrl'
           }
         }
       })
